@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:CreateBucket",
+                "s3:PutBucketPolicy",
+                "s3:PutBucketWebsite",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::s3-demo-static-website-*",
+                "arn:aws:s3:::s3-demo-static-website-*/*"
+            ]
+        }
+    ]
+}

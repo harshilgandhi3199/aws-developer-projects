@@ -1,0 +1,26 @@
+.header {
+    height: 60vh;
+    background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+  
+  .header-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .header h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .header p {
+    font-size: 1.5rem;
+  }

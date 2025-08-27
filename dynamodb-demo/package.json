@@ -1,0 +1,21 @@
+{
+  "name": "dynamodb-demo",
+  "version": "1.0.0",
+  "description": "A mini-project demonstrating the use of AWS DynamoDB.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/cli/commands.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1000.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "AWS",
+    "DynamoDB",
+    "demo"
+  ],
+  "author": "Your Name",
+  "license": "ISC"
+}

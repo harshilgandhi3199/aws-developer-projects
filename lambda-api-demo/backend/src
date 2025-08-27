@@ -1,0 +1,10 @@
+lambda-api-demo
+├── backend
+│   ├── src
+│   │   ├── index.js
+│   │   ├── routes
+│   │   │   └── api.js
+│   │   └── controllers
+│   │       └── lambdaController.js
+│   ├── package.json
+│   └── README.md

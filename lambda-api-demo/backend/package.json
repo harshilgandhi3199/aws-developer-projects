@@ -1,0 +1,19 @@
+{
+  "name": "lambda-api-demo-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Lambda API demo project using Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1234.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "author": "",
+  "license": "ISC"
+}

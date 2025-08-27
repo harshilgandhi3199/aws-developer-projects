@@ -1,0 +1,11 @@
+# S3 Encryption Test File
+
+       This is a test file to demonstrate different S3 encryption methods:
+       - Server-Side Encryption with S3-Managed Keys (SSE-S3)
+       - Server-Side Encryption with KMS Keys (SSE-KMS)
+       - Server-Side Encryption with Customer-Provided Keys (SSE-C)
+       - Client-Side Encryption
+       
+       Generated at: 2025-08-27T18:03:51.539Z
+       Random data: lzv76
+       
