@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 CORS Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6; }
+        .info { background: #d1ecf1; padding: 10px; border-radius: 5px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>S3 CORS Demo</h1>
+    
+    <div class="info">
+        <strong>Bucket:</strong> <span id="bucket-info">Loading...</span><br>
+        <strong>Object:</strong> <span id="object-info">Loading...</span>
+    </div>
+    
+    <button id="load-config">Load S3 Config</button>
+    <button id="list-objects">List S3 Objects</button>
+    <button id="fetch-object">Fetch Object</button>
+    
+    <h3>Response:</h3>
+    <pre id="response">Click a button to see the response...</pre>
+
+    <script>
+        let s3Config = null;
+
+        // Load S3 configuration from API
+        document.getElementById('load-config').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/s3-details');
+                s3Config = await response.json();
+                
+                document.getElementById('bucket-info').textContent = s3Config.bucketName;
+                document.getElementById('object-info').textContent = s3Config.objectKey;
+                document.getElementById('response').textContent = JSON.stringify(s3Config, null, 2);
+            } catch (error) {
+                document.getElementById('response').textContent = `Error loading config: ${error.message}`;
+            }
+        });
+
+        // List available S3 objects
+        document.getElementById('list-objects').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/s3-objects');
+                const data = await response.json();
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('response').textContent = `Error listing objects: ${error.message}`;
+            }
+        });
+
+        // Fetch object from S3 (CORS test)
+        document.getElementById('fetch-object').addEventListener('click', async () => {
+            if (!s3Config) {
+                document.getElementById('response').textContent = 'Please load S3 config first!';
+                return;
+            }
+
+            const bucketUrl = `https://${s3Config.bucketName}.s3.amazonaws.com/${s3Config.objectKey}`;
+            try {
+                const response = await fetch(bucketUrl, {
+                    method: 'GET'
+                });
+                
+                if (response.ok) {
+                    const data = await response.text();
+                    document.getElementById('response').textContent = `Success! Object content:\n\n${data}`;
+                } else {
+                    document.getElementById('response').textContent = `HTTP Error: ${response.status} ${response.statusText}`;
+                }
+            } catch (error) {
+                document.getElementById('response').textContent = `CORS Error: ${error.message}`;
+            }
+        });
+
+        // Auto-load config when page loads
+        window.addEventListener('load', () => {
+            document.getElementById('load-config').click();
+        });
+    </script>
+</body>
+</html>
