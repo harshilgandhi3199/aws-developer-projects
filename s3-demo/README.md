@@ -15,11 +15,11 @@ This project demonstrates how to interact with Amazon S3 using the AWS SDK for J
 - AWS Account
 - AWS CLI configured with appropriate permissions
 
+---
+
 ## CORS Implementation with S3 - Complete Guide
 
 This document outlines the complete process we followed to implement and test Cross-Origin Resource Sharing (CORS) with Amazon S3.
-
----
 
 ### Overview
 
@@ -30,7 +30,7 @@ In our case, we needed to:
 - Create a web application hosted on a different origin
 - Test CORS functionality by making requests from the web app to S3
 
-### CORS Configuration Explained:**
+### CORS Configuration Explained:
 * AllowedOrigins: Specifies which domains can make requests (http://localhost:3000)
 * AllowedMethods: HTTP methods allowed (GET for fetching objects)
 * AllowedHeaders: Headers that can be sent in requests (* allows all)
@@ -47,10 +47,12 @@ Dynamic Configuration: Fetches S3 details from server API
 Object Listing: Shows available objects in the bucket
 CORS Testing: Makes direct fetch request to S3 bucket
 
-### CORS Flow Explained
+### CORS Flow Explained:
 1. Browser loads page from http://localhost:3000
 2. JavaScript tries to fetch from https://bucket.s3.amazonaws.com
 3. Browser sends preflight request (OPTIONS) to S3
 4. S3 responds with CORS headers based on bucket policy
 5. Browser allows/blocks the actual request based on CORS response
 6. If allowed, actual GET request is sent and response received
+
+---

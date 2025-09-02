@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "aws-sdk": "^2.1000.0"
+    "aws-sdk": "^2.1000.0",
+    "express": "^5.1.0"
   },
-  "devDependencies": {},
   "author": "Your Name",
   "license": "ISC"
 }
